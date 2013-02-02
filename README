@@ -14,8 +14,8 @@ That's it
 /usr/local/bin/txmt_vim
 <code>
 #!/usr/bin/ruby
-txmt_param = ARGV[0] 									
-txmt_path = txmt_param.match("%2F.*&").to_s  	
+txmt_param = ARGV[0] 
+xmt_path = txmt_param.match("%2F.*&").to_s  	
 txmt_path = txmt_path [0...-1] 						
 txmt_path_slashed = txmt_path.gsub("%2F","/") 	
 txmt_line = txmt_param.match("&line=.*").to_s 	
