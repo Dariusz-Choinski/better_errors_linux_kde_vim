@@ -1,4 +1,3 @@
-<p>
 Better_errors gem does well on Mac, but on linux it has one disadvantage: link to remote file doesn't open it in editor as it does on Mac.
 That is because of type txmt:// protocol used in the link. Such protocol is unique and not recognized by the browser. 
 So, to make it working, first step is to register it in the browser or create a protocol mime-type handler in desktop.
@@ -11,18 +10,16 @@ Second step is creation a protocol handler, that is thin application.
 In directory "/user/local/bin" create a file "txmt_vim". Make it executable!. 
 That file does simply task, extracts "/path/to/file" and line number from url, then runs vim editor with extracted arguments.
 That's it
-</p>
-<pre>
-"/usr/local/bin/txmt_vim"
+
+/usr/local/bin/txmt_vim
 <code>
 #!/usr/bin/ruby
-
-txmt_param = ARGV[0] 									# take passed argument to this file
-txmt_path = txmt_param.match("%2F.*&").to_s  	# extract path substring from argument -"%2F...&"
-txmt_path = txmt_path [0...-1] 						# remove last letter -& from path string
-txmt_path_slashed = txmt_path.gsub("%2F","/") 	# exchange 
-txmt_line = txmt_param.match("&line=.*").to_s 	# extract line substring -"&line=123.." from path string
-txmt_line = txmt_line [6..txmt_line.length] 		# extract line number
+txmt_param = ARGV[0] 									
+txmt_path = txmt_param.match("%2F.*&").to_s  	
+txmt_path = txmt_path [0...-1] 						
+txmt_path_slashed = txmt_path.gsub("%2F","/") 	
+txmt_line = txmt_param.match("&line=.*").to_s 	
+txmt_line = txmt_line [6..txmt_line.length] 		
 vim_params = Array.new 
 vim_params = "--remote-tab-silent"
 vim_params << " +#{txmt_line}" if txmt_line
@@ -30,8 +27,7 @@ vim_params << " #{txmt_path_slashed}"
 
 `gvim  #{vim_params}`
 </code>
-</pre>
-<p>
+
 Solution tested on PCLinuxOS with KDE, but should be good on every Linux distro. Debian like distro uses a slightly different shebang #!.
-</p>
+
 
