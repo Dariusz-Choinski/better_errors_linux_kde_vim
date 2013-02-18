@@ -28,6 +28,5 @@ vim_params << " #{txmt_path_slashed}"
 `gvim  #{vim_params}`
 </code>
 
-Solution tested on PCLinuxOS with KDE, but should be good on every Linux distro. Debian like distro uses a slightly different shebang #!.
-
+Solution tested on PCLinuxOS with KDE, but should be good on every Linux distro. Use appropriate shebang #! to ruby 
 
