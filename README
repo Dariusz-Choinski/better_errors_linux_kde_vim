@@ -13,9 +13,9 @@ That's it
 
 /usr/local/bin/txmt_vim
 <code>
-#!/usr/bin/ruby
+#!/usr/bin/env ruby
 txmt_param = ARGV[0] 
-xmt_path = txmt_param.match("%2F.*&").to_s  	
+txmt_path = txmt_param.match("%2F.*&").to_s  	
 txmt_path = txmt_path [0...-1] 						
 txmt_path_slashed = txmt_path.gsub("%2F","/") 	
 txmt_line = txmt_param.match("&line=.*").to_s 	
@@ -28,5 +28,5 @@ vim_params << " #{txmt_path_slashed}"
 `gvim  #{vim_params}`
 </code>
 
-Solution tested on PCLinuxOS with KDE, but should be good on every Linux distro. Use appropriate shebang #! to ruby 
+Solution tested on PCLinuxOS with KDE, but should be good on every Linux distro. Use appropriate shebang #! to ruby. 
 
